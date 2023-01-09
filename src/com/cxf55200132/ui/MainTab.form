@@ -14,7 +14,7 @@
         </constraints>
         <properties>
           <font name="JetBrains Mono Medium" size="20" style="1"/>
-          <text value="Information"/>
+          <text value="EMPLOYEE"/>
         </properties>
       </component>
       <scrollpane id="eec13">

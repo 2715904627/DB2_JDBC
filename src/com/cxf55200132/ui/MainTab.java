@@ -94,26 +94,26 @@ public class MainTab {
         });
 
 
-//        tabData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-//            @Override
-//            public void valueChanged(ListSelectionEvent e) {
-//                int[] selrow = tabData.getSelectedRows();
-//                int i = selrow.length;
-//                while(i>0){
-//                   i--;
-//                   setACTvalues(selrow[i]);
-//                }
-//            }
-//        });
         tabData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int selrow = tabData.getSelectedRow();
-                if (selrow > -1) {
-                    setTEMPLvalues(selrow);
+                int[] selrow = tabData.getSelectedRows();
+                int i = selrow.length;
+                while(i>0){
+                   i--;
+                   setTEMPLvalues(selrow[i]);
                 }
             }
         });
+//        tabData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+//            @Override
+//            public void valueChanged(ListSelectionEvent e) {
+//                int selrow = tabData.getSelectedRow();
+//                if (selrow > -1) {
+//                    setTEMPLvalues(selrow);
+//                }
+//            }
+//        });
         btn_add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -238,7 +238,7 @@ public class MainTab {
         JFrame frame = new JFrame("DB2_cxf55200132");
         frame.setBounds(560,45,640,450);
         frame.setContentPane(this.JPMain);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         InitTable();

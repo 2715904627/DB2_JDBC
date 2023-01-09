@@ -2,7 +2,9 @@ package com.cxf55200132.DAO.Test;
 
 import com.cxf55200132.DAO.Dao.ACTDAO;
 import com.cxf55200132.DAO.Dao.CustomerDAO;
+import com.cxf55200132.DAO.Dao.TEMPLDAO;
 import com.cxf55200132.DAO.Domain.ACT;
+import com.cxf55200132.DAO.Domain.TEMPL;
 import com.cxf55200132.jdbc.utils.Customer;
 import org.testng.annotations.Test;
 
@@ -26,16 +28,16 @@ public class TestDAO {
 
     @Test
     public void TestACTDAO() throws SQLException {
-        ACTDAO actdao = new ACTDAO();
-        List<ACT> list = actdao.QueryMultiply("SELECT * FROM act WHERE ACTNO >= ?", ACT.class,20);
-        for(ACT act : list){
-            System.out.println(act);
+        TEMPLDAO templdao = new TEMPLDAO();
+        List<TEMPL> list = templdao.QueryMultiply("SELECT * FROM employee ", TEMPL.class);
+        for(TEMPL templ : list){
+            System.out.println(templ);
         }
 //        System.out.println(customerDAO.QuerySingle("SELECT * FROM customers WHERE id = ? ",Customer.class , 1 ));
 
 //        Object name = actdao.QueryScalar("SELECT ACTNO FROM act");
 //        System.out.println(name);
-        int rows = actdao.Update("INSERT INTO act (ACTNO,ACTKWD,ACTDESC) VALUES(111,'DOC','DOCUMENT')");
-        System.out.println(rows);
+//        int rows = actdao.Update("INSERT INTO act (ACTNO,ACTKWD,ACTDESC) VALUES(111,'DOC','DOCUMENT')");
+//        System.out.println(rows);
     }
 }
