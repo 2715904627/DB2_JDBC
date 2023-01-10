@@ -1,10 +1,7 @@
 package com.cxf55200132.ui;
 
-import com.cxf55200132.DAO.Dao.ACTDAO;
 import com.cxf55200132.DAO.Dao.TEMPLDAO;
-import com.cxf55200132.DAO.Domain.ACT;
 import com.cxf55200132.DAO.Domain.TEMPL;
-import com.cxf55200132.view.MainForm;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -12,8 +9,10 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.List;
+import java.awt.event.MouseAdapter;
 
 public class Add {
 
@@ -42,6 +41,7 @@ public class Add {
     private JTextField textField12;
     private JTextField textField13;
     private JTextField textField14;
+    private JButton btn_refresh;
 
 
     public static void main(String[] args) throws SQLException {
@@ -57,12 +57,15 @@ public class Add {
         tabData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int selrow = tabData.getSelectedRow();
-                if (selrow > -1) {
-                    setTEMPLvalues(selrow);
+                if(!e.getValueIsAdjusting()){
+                    int selrow = tabData.getSelectedRow();
+                    if (selrow > -1) {
+                        setTEMPLvalues(selrow);
+                }
                 }
             }
         });
+
         btn_single.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -88,7 +91,7 @@ public class Add {
 //                ACTDAO actDAO = new ACTDAO();
 //        System.out.println(act.getACTNO());
                 try {
-                    int rows = templdao.Update("INSERT INTO employee (EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO, HIREDATE,JOB,EDLEVEL,SEX,BIRTHDATE,SALARY,BONUS,COMM) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",templ.getEMPNO(),templ.getFIRSTNME(),templ.getMIDINIT(), templ.getLASTNAME(),templ.getWORKDEPT(),templ.getPHONENO(),templ.getHIREDATE(),templ.getJOB(),templ.getEDLEVEL(),templ.getSEX(),templ.getBIRTHDATE(),templ.getSALARY(),templ.getBONUS(),templ.getCOMM());
+                    int rows = templdao.Update("INSERT INTO templ (EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO, HIREDATE,JOB,EDLEVEL,SEX,BIRTHDATE,SALARY,BONUS,COMM) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",templ.getEMPNO(),templ.getFIRSTNME(),templ.getMIDINIT(), templ.getLASTNAME(),templ.getWORKDEPT(),templ.getPHONENO(),templ.getHIREDATE(),templ.getJOB(),templ.getEDLEVEL(),templ.getSEX(),templ.getBIRTHDATE(),templ.getSALARY(),templ.getBONUS(),templ.getCOMM());
                     if(rows>0){
                         JOptionPane.showMessageDialog(null,"Greetings");
                     }
@@ -164,7 +167,7 @@ public class Add {
 //                ACTDAO actDAO = new ACTDAO();
 //               System.out.println(act.getACTNO());
                 try {
-                    int rows = templdao.Update("delete from employee where empno = ?",templ.getEMPNO());
+                    int rows = templdao.Update("delete from templ where empno = ?",templ.getEMPNO());
                     if(rows>0){
                         JOptionPane.showMessageDialog(null,"Greetings");
                     }
@@ -176,6 +179,40 @@ public class Add {
                     throw new RuntimeException(ex);
                 }
 
+
+            }
+        });
+        btn_refresh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    List<TEMPL> list = templdao.QueryMultiply("SELECT * FROM templ", TEMPL.class);
+
+                    Object[][] data = new Object[list.size()][14];
+                    for (int i = 0; i < data.length ; i++) {
+                        data[i][0] = list.get(i).getEMPNO();
+                        data[i][1] = list.get(i).getFIRSTNME();
+                        data[i][2] = list.get(i).getMIDINIT();
+                        data[i][3] = list.get(i).getLASTNAME();
+                        data[i][4] = list.get(i).getWORKDEPT();
+                        data[i][5] = list.get(i).getPHONENO();
+                        data[i][6] = list.get(i).getHIREDATE();
+                        data[i][7] = list.get(i).getJOB();
+                        data[i][8] = list.get(i).getEDLEVEL();
+                        data[i][9] = list.get(i).getSEX();
+                        data[i][10] = list.get(i).getBIRTHDATE();
+                        data[i][11] = list.get(i).getSALARY();
+                        data[i][12] = list.get(i).getBONUS();
+                        data[i][13] = list.get(i).getCOMM();
+
+                        tabData.setModel(new DefaultTableModel(data, columnNames));
+
+                    }
+
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
         });
@@ -195,7 +232,7 @@ public class Add {
 
 
     private  void InitTable() throws SQLException {
-        List<TEMPL> list = templdao.QueryMultiply("SELECT * FROM employee", TEMPL.class);
+        List<TEMPL> list = templdao.QueryMultiply("SELECT * FROM templ", TEMPL.class);
 
         Object[][] data = new Object[list.size()][14];
         for (int i = 0; i < data.length ; i++) {

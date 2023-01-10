@@ -1,12 +1,8 @@
 package com.cxf55200132.ui;
 
-import com.cxf55200132.DAO.Dao.ACTDAO;
 import com.cxf55200132.DAO.Dao.TEMPLDAO;
-import com.cxf55200132.DAO.Domain.ACT;
 import com.cxf55200132.DAO.Domain.TEMPL;
-import com.cxf55200132.view.MainForm;
 
-import javax.management.StandardEmitterMBean;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -14,7 +10,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MainTab {
@@ -45,6 +42,32 @@ public class MainTab {
     private JTextField textField12;
     private JTextField textField13;
     private JTextField textField14;
+    private JButton transButton;
+
+    private String title1 = null;
+    private String title2 = null;
+    private String title3 = null;
+    private String title4 = null;
+    private String title5 = null;
+    private String title6 = null;
+    private String title7 = null;
+    private String title8 = null;
+    private String title9 = null;
+    private String title10 = null;
+    private String title11 = null;
+    private String title12 = null;
+    private String title13 = null;
+    private String title14 = null;
+
+//    private Object[][] param;
+
+//    private  int sqlnum = 0;
+
+    private String MulInssql;
+
+    private List<TEMPL> multempl = new ArrayList<>();
+
+
 
 
     public MainTab() throws SQLException {
@@ -97,11 +120,24 @@ public class MainTab {
         tabData.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int[] selrow = tabData.getSelectedRows();
-                int i = selrow.length;
-                while(i>0){
-                   i--;
-                   setTEMPLvalues(selrow[i]);
+                if(!e.getValueIsAdjusting()){
+                    int[] selrow = tabData.getSelectedRows();
+                    int i = selrow.length;
+    //                param = new Object[i+1][14];
+                    while(i>0) {
+                        i--;
+                        try {
+                            setTEMPLvalues(selrow[i]);
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
+                        } finally {
+                            for (int j = 0; j < selrow.length; j++) {
+                                selrow[j] = 0;
+                            }
+                            //                        param = null;
+
+                        }
+                    }
                 }
             }
         });
@@ -227,6 +263,38 @@ public class MainTab {
 
             }
         });
+        transButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Object[][] param = new Object[multempl.size()][14];
+                for (int i = 0; i < param.length ; i++) {
+                    param[i][0] = multempl.get(i).getEMPNO();
+                    param[i][1] = multempl.get(i).getFIRSTNME();
+                    param[i][2] = multempl.get(i).getMIDINIT();
+                    param[i][3] = multempl.get(i).getLASTNAME();
+                    param[i][4] = multempl.get(i).getWORKDEPT();
+                    param[i][5] = multempl.get(i).getPHONENO();
+                    param[i][6] = multempl.get(i).getHIREDATE();
+                    param[i][7] = multempl.get(i).getJOB();
+                    param[i][8] = multempl.get(i).getEDLEVEL();
+                    param[i][9] = multempl.get(i).getSEX();
+                    param[i][10] = multempl.get(i).getBIRTHDATE();
+                    param[i][11] = multempl.get(i).getSALARY();
+                    param[i][12] = multempl.get(i).getBONUS();
+                    param[i][13] = multempl.get(i).getCOMM();
+
+                }
+
+                try {
+                    templdao.MulUpdate(MulInssql,param);
+//                    sqlnum = 0;
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
+        });
     }
 
 
@@ -270,77 +338,109 @@ public class MainTab {
     }
 
 
-    private void setTEMPLvalues(int selrow) {
+    private void setTEMPLvalues(int selrow ) throws SQLException {
+
         if (tabData.getValueAt(selrow, 0) != null) {
             textField1.setText(tabData.getValueAt(selrow,0).toString());
+            title1 = tabData.getValueAt(selrow,0).toString();
 
         }
         if (tabData.getValueAt(selrow, 1) != null) {
             textField2.setText(tabData.getValueAt(selrow,1).toString());
+            title2 =tabData.getValueAt(selrow,1).toString();
 
         }
         if (tabData.getValueAt(selrow, 2) != null) {
             textField3.setText(tabData.getValueAt(selrow,2).toString());
 
+            title3 = tabData.getValueAt(selrow,2).toString();
+
         }
         if (tabData.getValueAt(selrow, 3) != null) {
             textField4.setText(tabData.getValueAt(selrow,3).toString());
+
+            title4 = tabData.getValueAt(selrow,3).toString();
 
         }
         if (tabData.getValueAt(selrow, 4) != null) {
             textField5.setText(tabData.getValueAt(selrow,4).toString());
 
+            title5 =  tabData.getValueAt(selrow,4).toString();
+
         }
         if (tabData.getValueAt(selrow, 5) != null) {
             textField6.setText(tabData.getValueAt(selrow,5).toString());
+
+            title6 = tabData.getValueAt(selrow,5).toString();
 
         }
         if (tabData.getValueAt(selrow, 6) != null) {
             textField7.setText(tabData.getValueAt(selrow,6).toString());
 
+            title7 = tabData.getValueAt(selrow,6).toString();
+
         }
         if (tabData.getValueAt(selrow, 7) != null) {
             textField8.setText(tabData.getValueAt(selrow,7).toString());
+
+            title8 = tabData.getValueAt(selrow,7).toString();
 
         }
         if (tabData.getValueAt(selrow, 8) != null) {
             textField9.setText(tabData.getValueAt(selrow,8).toString());
 
+            title9 = tabData.getValueAt(selrow,8).toString();
+
         }
         if (tabData.getValueAt(selrow, 9) != null) {
             textField10.setText(tabData.getValueAt(selrow,9).toString());
+
+            title10 = tabData.getValueAt(selrow,9).toString();
 
         }
         if (tabData.getValueAt(selrow, 10) != null) {
             textField11.setText(tabData.getValueAt(selrow,10).toString());
 
+            title11 = tabData.getValueAt(selrow,10).toString();
+
         }
         if (tabData.getValueAt(selrow, 11) != null) {
             textField12.setText(tabData.getValueAt(selrow,11).toString());
+
+            title12 = tabData.getValueAt(selrow,11).toString();
 
         }
         if (tabData.getValueAt(selrow, 12) != null) {
             textField13.setText(tabData.getValueAt(selrow,12).toString());
 
+            title13 = tabData.getValueAt(selrow,12).toString();
+
         }
         if (tabData.getValueAt(selrow, 13) != null) {
             textField14.setText(tabData.getValueAt(selrow,13).toString());
 
+            title14 = tabData.getValueAt(selrow,13).toString();
+
         }
-//        if (tabData.getValueAt(selrow, 0) != null) {
-//
-//            System.out.print(tabData.getValueAt(selrow,0).toString());
-//            System.out.print(" ");
-//        }
-//        if (tabData.getValueAt(selrow, 1) != null) {
-//            System.out.print(tabData.getValueAt(selrow,1).toString());
-//            System.out.print(" ");
-//
-//        }
-//        if (tabData.getValueAt(selrow, 2) != null) {
-//            System.out.print(tabData.getValueAt(selrow,2).toString());
-//            System.out.print(" ");
-//
-//        }
+
+        MulInssql = "INSERT INTO templ (EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO, HIREDATE,JOB,EDLEVEL,SEX,BIRTHDATE,SALARY,BONUS,COMM) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        TEMPL templ = new TEMPL(title1,title2,title3,title4,title5,title6,  java.sql.Date.valueOf(title7),title8,Integer.valueOf(title9),title10,java.sql.Date.valueOf(title11),title12,title13,title14);
+//        templdao.Update(MulInssql,templ.getEMPNO(),templ.getFIRSTNME(),templ.getMIDINIT(),templ.getLASTNAME(),templ.getWORKDEPT(),templ.getPHONENO(),templ.getHIREDATE(),templ.getJOB(),templ.getEDLEVEL(),templ.getSEX(),templ.getBIRTHDATE(),templ.getSALARY(),templ.getBONUS(),templ.getCOMM());
+        multempl.add(templ);
+//        param[sqlnum][0] = templ.getEMPNO();
+//        param[sqlnum][1] = templ.getFIRSTNME();
+//        param[sqlnum][2] = templ.getMIDINIT();
+//        param[sqlnum][3] = templ.getLASTNAME();
+//        param[sqlnum][4] = templ.getWORKDEPT();
+//        param[sqlnum][5] = templ.getPHONENO();
+//        param[sqlnum][6] = templ.getHIREDATE();
+//        param[sqlnum][7] = templ.getJOB();
+//        param[sqlnum][8] = templ.getEDLEVEL();
+//        param[sqlnum][9] = templ.getSEX();
+//        param[sqlnum][10] = templ.getBIRTHDATE();
+//        param[sqlnum][11] = templ.getSALARY();
+//        param[sqlnum][12] = templ.getBONUS();
+//        param[sqlnum][13] = templ.getCOMM();
+//        sqlnum += 1;
     }
 }
