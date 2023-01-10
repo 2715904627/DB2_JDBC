@@ -93,7 +93,7 @@ public class Add {
                 try {
                     int rows = templdao.Update("INSERT INTO templ (EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO, HIREDATE,JOB,EDLEVEL,SEX,BIRTHDATE,SALARY,BONUS,COMM) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",templ.getEMPNO(),templ.getFIRSTNME(),templ.getMIDINIT(), templ.getLASTNAME(),templ.getWORKDEPT(),templ.getPHONENO(),templ.getHIREDATE(),templ.getJOB(),templ.getEDLEVEL(),templ.getSEX(),templ.getBIRTHDATE(),templ.getSALARY(),templ.getBONUS(),templ.getCOMM());
                     if(rows>0){
-                        JOptionPane.showMessageDialog(null,"Greetings");
+                        JOptionPane.showMessageDialog(null,"Congratulations");
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Sorry");
@@ -169,7 +169,7 @@ public class Add {
                 try {
                     int rows = templdao.Update("delete from templ where empno = ?",templ.getEMPNO());
                     if(rows>0){
-                        JOptionPane.showMessageDialog(null,"Greetings");
+                        JOptionPane.showMessageDialog(null,"Congratulations");
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Sorry");

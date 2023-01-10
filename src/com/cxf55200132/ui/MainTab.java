@@ -178,7 +178,7 @@ public class MainTab {
                 try {
                     int rows = templdao.Update("INSERT INTO employee (EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO, HIREDATE,JOB,EDLEVEL,SEX,BIRTHDATE,SALARY,BONUS,COMM) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",templ.getEMPNO(),templ.getFIRSTNME(),templ.getMIDINIT(), templ.getLASTNAME(),templ.getWORKDEPT(),templ.getPHONENO(),templ.getHIREDATE(),templ.getJOB(),templ.getEDLEVEL(),templ.getSEX(),templ.getBIRTHDATE(),templ.getSALARY(),templ.getBONUS(),templ.getCOMM());
                     if(rows>0){
-                        JOptionPane.showMessageDialog(null,"Greetings");
+                        JOptionPane.showMessageDialog(null,"Congratulations");
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Sorry");
@@ -215,7 +215,7 @@ public class MainTab {
                 try {
                     int rows = templdao.Update("update employee set sex = ? where empno = ?",templ.getSEX(),templ.getEMPNO());
                     if(rows>0){
-                        JOptionPane.showMessageDialog(null,"Greetings");
+                        JOptionPane.showMessageDialog(null,"Congratulations");
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Sorry");
@@ -251,7 +251,7 @@ public class MainTab {
                 try {
                     int rows = templdao.Update("delete from employee where empno = ?",templ.getEMPNO());
                     if(rows>0){
-                        JOptionPane.showMessageDialog(null,"Greetings");
+                        JOptionPane.showMessageDialog(null,"Congratulations");
                     }
                     else {
                         JOptionPane.showMessageDialog(null,"Sorry");
