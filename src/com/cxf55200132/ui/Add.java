@@ -9,10 +9,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.List;
-import java.awt.event.MouseAdapter;
 
 public class Add {
 
@@ -30,16 +28,16 @@ public class Add {
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
-    private JTextField textField4;
     private JTextField textField5;
-    private JTextField textField6;
     private JTextField textField7;
-    private JTextField textField8;
     private JTextField textField9;
-    private JTextField textField10;
     private JTextField textField11;
-    private JTextField textField12;
     private JTextField textField13;
+    private JTextField textField4;
+    private JTextField textField6;
+    private JTextField textField8;
+    private JTextField textField10;
+    private JTextField textField12;
     private JTextField textField14;
     private JButton btn_refresh;
 
@@ -72,24 +70,20 @@ public class Add {
                 String EMPNO = textField1.getText();
                 String FIRSTNME = textField2.getText();
                 String MIDINIT = textField3.getText();
-                String LASTNAME = textField4.getText();
-                String WORKDEPT = textField5.getText();
-                String PHONENO = textField6.getText();
-                String HIREDATE = textField7.getText();
-                String JOB = textField8.getText();
-                String EDLEVEL = textField9.getText();
-                String SEX = textField10.getText();
-                String BIRTHDATE = textField11.getText();
-                String SALARY = textField12.getText();
-                String BONUS = textField13.getText();
+                String LASTNAME = textField5.getText();
+                String WORKDEPT = textField7.getText();
+                String PHONENO = textField9.getText();
+                String HIREDATE = textField11.getText();
+                String JOB = textField13.getText();
+                String EDLEVEL = textField4.getText();
+                String SEX = textField6.getText();
+                String BIRTHDATE = textField8.getText();
+                String SALARY = textField10.getText();
+                String BONUS = textField12.getText();
                 String COMM = textField14.getText();
 
                 TEMPL templ = new TEMPL(EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO,  java.sql.Date.valueOf(HIREDATE),JOB,Integer.valueOf(EDLEVEL),SEX,java.sql.Date.valueOf(BIRTHDATE),SALARY,BONUS,COMM);
 
-//                ACT act = new ACT(Integer.valueOf(actno),actkwd,actdesc);
-//                System.out.println(act);
-//                ACTDAO actDAO = new ACTDAO();
-//        System.out.println(act.getACTNO());
                 try {
                     int rows = templdao.Update("INSERT INTO templ (EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO, HIREDATE,JOB,EDLEVEL,SEX,BIRTHDATE,SALARY,BONUS,COMM) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",templ.getEMPNO(),templ.getFIRSTNME(),templ.getMIDINIT(), templ.getLASTNAME(),templ.getWORKDEPT(),templ.getPHONENO(),templ.getHIREDATE(),templ.getJOB(),templ.getEDLEVEL(),templ.getSEX(),templ.getBIRTHDATE(),templ.getSALARY(),templ.getBONUS(),templ.getCOMM());
                     if(rows>0){
@@ -151,16 +145,16 @@ public class Add {
                 String EMPNO = textField1.getText();
                 String FIRSTNME = textField2.getText();
                 String MIDINIT = textField3.getText();
-                String LASTNAME = textField4.getText();
-                String WORKDEPT = textField5.getText();
-                String PHONENO = textField6.getText();
-                String HIREDATE = textField7.getText();
-                String JOB = textField8.getText();
-                String EDLEVEL = textField9.getText();
-                String SEX = textField10.getText();
-                String BIRTHDATE = textField11.getText();
-                String SALARY = textField12.getText();
-                String BONUS = textField13.getText();
+                String LASTNAME = textField5.getText();
+                String WORKDEPT = textField7.getText();
+                String PHONENO = textField9.getText();
+                String HIREDATE = textField11.getText();
+                String JOB = textField13.getText();
+                String EDLEVEL = textField4.getText();
+                String SEX = textField6.getText();
+                String BIRTHDATE = textField8.getText();
+                String SALARY = textField10.getText();
+                String BONUS = textField12.getText();
                 String COMM = textField14.getText();
                 TEMPL templ = new TEMPL(EMPNO,FIRSTNME,MIDINIT,LASTNAME,WORKDEPT,PHONENO,  java.sql.Date.valueOf(HIREDATE),JOB,Integer.valueOf(EDLEVEL),SEX,java.sql.Date.valueOf(BIRTHDATE),SALARY,BONUS,COMM);
 //                System.out.println(act);
@@ -241,6 +235,7 @@ public class Add {
     }
 
 
+
     private  void InitTable() throws SQLException {
         List<TEMPL> list = templdao.QueryMultiply("SELECT * FROM templ", TEMPL.class);
 
@@ -261,9 +256,13 @@ public class Add {
             data[i][12] = list.get(i).getBONUS();
             data[i][13] = list.get(i).getCOMM();
 
+
         }
+
         DefaultTableModel dtm = new DefaultTableModel(data, columnNames);
         tabData.setModel(dtm);
+
+
     }
 
     private void setTEMPLvalues(int selrow) {
@@ -340,5 +339,7 @@ public class Add {
 //
 //        }
     }
+
+
 }
 

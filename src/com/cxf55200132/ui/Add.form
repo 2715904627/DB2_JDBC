@@ -224,7 +224,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="8e746" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+          <component id="8e746" class="javax.swing.JTextField" binding="textField5">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -232,7 +232,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="a8840" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+          <component id="a8840" class="javax.swing.JTextField" binding="textField7">
             <constraints>
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -240,7 +240,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="5e567" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+          <component id="5e567" class="javax.swing.JTextField" binding="textField9">
             <constraints>
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -248,7 +248,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="999d3" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+          <component id="999d3" class="javax.swing.JTextField" binding="textField11">
             <constraints>
               <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -256,7 +256,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="dcacf" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+          <component id="dcacf" class="javax.swing.JTextField" binding="textField13">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -264,15 +264,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="6de33" class="javax.swing.JTextField" binding="textField9" default-binding="true">
-            <constraints>
-              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="e3cee" class="javax.swing.JTextField" binding="textField10" default-binding="true">
+          <component id="e3cee" class="javax.swing.JTextField" binding="textField6">
             <constraints>
               <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -280,7 +272,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="fbc52" class="javax.swing.JTextField" binding="textField11" default-binding="true">
+          <component id="fbc52" class="javax.swing.JTextField" binding="textField8">
             <constraints>
               <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -288,7 +280,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="e1345" class="javax.swing.JTextField" binding="textField12" default-binding="true">
+          <component id="e1345" class="javax.swing.JTextField" binding="textField10">
             <constraints>
               <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -296,7 +288,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="f4c60" class="javax.swing.JTextField" binding="textField13" default-binding="true">
+          <component id="f4c60" class="javax.swing.JTextField" binding="textField12">
             <constraints>
               <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -307,6 +299,14 @@
           <component id="b3e9" class="javax.swing.JTextField" binding="textField14" default-binding="true">
             <constraints>
               <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="6de33" class="javax.swing.JTextField" binding="textField4">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
