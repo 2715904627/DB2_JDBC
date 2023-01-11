@@ -125,7 +125,7 @@ public class MainTab {
                     }
                     tabData.setModel(new DefaultTableModel(data, columnNames));
 
-                    update02();
+
 
 
                 } catch (SQLException ex) {
@@ -469,13 +469,5 @@ public class MainTab {
         multempl.add(templ);
 
     }
-    public void update02() throws SQLException {
-        templdao.Update("update employee set midinit = ? where empno = ?", "","000120" );
-        templdao.Update("update employee set midinit = ? where empno = ?", "","000150" );
-        templdao.Update("update employee set midinit = ? where empno = ?", "", "000330");
-        templdao.Update("update employee set midinit = ? where empno = ?", "", "000200");
-        templdao.Update("update employee set midinit = ? where empno = ?", "", "200120");
-        templdao.Update("update employee set midinit = ? where empno = ?", "", "200170");
-        templdao.Update("update employee set midinit = ? where empno = ?", "","200330" );
-    }
+
 }
