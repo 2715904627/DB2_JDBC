@@ -208,6 +208,7 @@ public class MainTab {
 
                     }
                 } catch (SQLException ex) {
+
                     throw new RuntimeException(ex);
                 }
 //        int rows = actDAO.Update("INSERT INTO act (ACTNO,ACTKWD,ACTDESC) VALUES(121,'DOC','DOCUMENT')");
@@ -236,7 +237,7 @@ public class MainTab {
 //                ACTDAO actDAO = new ACTDAO();
 //        System.out.println(act.getACTNO());
                 try {
-                    int rows = templdao.Update("update employee set sex = ? where empno = ?", templ.getSEX(), templ.getEMPNO());
+                    int rows = templdao.Update("update employee set edlevel = ? where empno = ?", templ.getEDLEVEL(), templ.getEMPNO());
                     if (rows > 0) {
                         JOptionPane.showMessageDialog(null, "Congratulations");
                     } else {

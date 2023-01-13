@@ -6,6 +6,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,6 +24,19 @@ public class BasicDAO<T> {
 
             return rows;
         } catch (SQLException e) {
+            if(e.getSQLState() == null){
+                JOptionPane.showMessageDialog(null, "输入数据超出范围");
+
+            }
+            else if(e.getSQLState().equals("22001")){
+                JOptionPane.showMessageDialog(null, "中间名最多有一个字符");
+
+            } else if (e.getSQLState().equals("23505")) {
+
+                JOptionPane.showMessageDialog(null, "empno值只能唯一");
+
+            }
+
             throw new RuntimeException(e);
         } finally {
             JDBCUtils.close(null,null,con);
