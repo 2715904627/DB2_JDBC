@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class MainTab {
     private TEMPLDAO templdao = new TEMPLDAO();
@@ -86,10 +87,11 @@ public class MainTab {
                     Object[][] data = new Object[list.size()][14];
                     for (int i = 0; i < data.length; i++) {
                         data[i][0] = list.get(i).getEMPNO();
-
                         data[i][2] = list.get(i).getMIDINIT();
 
+
                         String MIDINIT = data[i][2].toString();
+
                         if(MIDINIT.equals(" ") || MIDINIT == null){
 
                             templdao.Update("update employee set midinit = ? where empno = ?", "@",data[i][0].toString());
@@ -342,8 +344,13 @@ public class MainTab {
         for (int i = 0; i < data.length; i++) {
             data[i][0] = list.get(i).getEMPNO();
             data[i][2] = list.get(i).getMIDINIT();
-
+//            data[i][8] = list.get(i).getEDLEVEL();
             String MIDINIT = data[i][2].toString();
+//            String EDLEVEL = data[i][8].toString();
+//            if(EDLEVEL.equals("99")){
+//                templdao.Update("update employee set edlevel = ? where empno = ?", 16,data[i][0].toString());
+//
+//            }
             if(MIDINIT.equals(" ") || MIDINIT == null){
 
                 templdao.Update("update employee set midinit = ? where empno = ?", "@",data[i][0].toString());
