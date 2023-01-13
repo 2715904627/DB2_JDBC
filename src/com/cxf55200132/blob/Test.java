@@ -1,17 +1,23 @@
 package com.cxf55200132.blob;
 
+import javax.swing.*;
 import java.sql.*;
 import java.io.*;
 import java.util.*;
 import java.math.*;
 public class Test {
-    public static void main(String[] args) throws Exception {
-        Test test = new Test();
+
+    public Test(String EMPNO) throws Exception {
+
         int k=1;
-        Connection conn = test.createConnection();
+        Connection conn = this.createConnection();
         try {
-            java.sql.Statement st=conn.createStatement();
-            java.sql.ResultSet rs=st.executeQuery("select picture from student.emp_photo where empno='000150'");
+            JOptionPane.showMessageDialog(null,"Congratulations");
+            String sql = "select picture from student.emp_photo where empno=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,EMPNO);
+
+            java.sql.ResultSet rs=ps.executeQuery();
             while(rs.next())
             {
                 //读取Blob对象
@@ -24,9 +30,13 @@ public class Test {
                 FileOutputStream fo = new FileOutputStream(fileOutput);
                 int c;
                 //读取流并写入到文件中
-                while ((c = inputStream.read()) != -1) fo.write(c);
+                while ((c = inputStream.read()) != -1) {
+
+                    fo.write(c);
+                }
                 //流的关闭:
                 fo.close();
+
             }
         }
         catch (SQLException e) {
@@ -58,9 +68,8 @@ public class Test {
     private Connection createConnection() {
         Connection conn = null;
         try {
-            Class.forName("COM.ibm.db2.jdbc.app.DB2Driver");
-            conn = java.sql.DriverManager.getConnection("jdbc:db2:sample",
-                    "db2admin", "db2admin");
+            Class.forName ("com.ibm.db2.jcc.DB2Driver");
+            conn = DriverManager.getConnection("jdbc:db2://192.168.31.130:50000/sample","student","Cxx197559");
         }
         catch (SQLException ex1) {
             ex1.printStackTrace();  }

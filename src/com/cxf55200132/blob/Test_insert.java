@@ -1,15 +1,14 @@
 package com.cxf55200132.blob;
 
+import javax.swing.*;
 import java.sql.*;
 import java.io.*;
 import java.util.*;
 import java.math.*;
 public class Test_insert {
 
-    public static void main(String[] args) throws Exception {
-
-        Test_insert test = new Test_insert();
-        Connection conn = test.createConnection();
+    public Test_insert(String EMPNO,String Photo_Format) throws Exception {
+        Connection conn = this.createConnection();
 
 
         // Blob对象的插入的方法:
@@ -18,12 +17,12 @@ public class Test_insert {
 
             // 创建插入语句.
             java.sql.PreparedStatement preparedStatement = conn
-                    .prepareStatement("insert into administrator.emp_photo values('000130','jpeg',?)");
+                    .prepareStatement("insert into student.emp_photo values(?,?,?)");
 
 
             //创建文件对象:
 
-            File file=new File("c:/a.jpg");
+            File file=new File("C:/Users/Tlaloc/IdeaProjects/E-JDBC/src/com/cxf55200132/blob/img/0001.jpg");
 
 
             // 创建流对象:
@@ -32,12 +31,14 @@ public class Test_insert {
 
 
             //参数赋值:
-            preparedStatement.setBinaryStream(1, imageInput,(int) file.length());
+            preparedStatement.setString(1,EMPNO);
+            preparedStatement.setString(2,Photo_Format);
+            preparedStatement.setBinaryStream(3, imageInput,(int) file.length());
 
 
             //执行语句
             preparedStatement.executeUpdate();
-
+            JOptionPane.showMessageDialog(null,"Congratulations");
 
 
             //------------------------------------------------------------------
@@ -119,10 +120,10 @@ public class Test_insert {
         try {
 
 
-            Class.forName("COM.ibm.db2.jdbc.app.DB2Driver");
+            Class.forName ("com.ibm.db2.jcc.DB2Driver");
 
-            conn = java.sql.DriverManager.getConnection("jdbc:db2:sample",
-                    "db2admin", "db2admin");
+            conn = DriverManager.getConnection("jdbc:db2://192.168.31.130:50000/sample","student","Cxx197559");
+
 
 
         } catch (SQLException ex1) {
