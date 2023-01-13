@@ -11,7 +11,7 @@ public class Test {
         Connection conn = test.createConnection();
         try {
             java.sql.Statement st=conn.createStatement();
-            java.sql.ResultSet rs=st.executeQuery("select picture from administrator.emp_photo where empno='000150'");
+            java.sql.ResultSet rs=st.executeQuery("select picture from student.emp_photo where empno='000150'");
             while(rs.next())
             {
                 //读取Blob对象
@@ -19,7 +19,7 @@ public class Test {
                 //Blob对象转化为InputStream流
                 java.io.InputStream inputStream =blob.getBinaryStream();
                 //要写入的文件
-                File fileOutput = new File("c:/backa.jpg");
+                File fileOutput = new File("C:/Users/Tlaloc/IdeaProjects/E-JDBC/src/com/cxf55200132/blob/img/0001.jpg");
                 //文件的写入流的定义
                 FileOutputStream fo = new FileOutputStream(fileOutput);
                 int c;
