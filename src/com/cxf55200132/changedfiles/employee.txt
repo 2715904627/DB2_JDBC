@@ -1,0 +1,15 @@
+package com.cxf55200132.changedfiles;  java.lang.String empno;
+  java.lang.String firstnme;
+  java.lang.String midinit;
+  java.lang.String lastname;
+  java.lang.String workdept;
+  java.lang.String phoneno;
+  java.sql.Date hiredate;
+  java.lang.String job;
+  short edlevel;
+  java.lang.String sex;
+  java.sql.Date birthdate;
+  java.math.BigDecimal salary;
+  java.math.BigDecimal bonus;
+  java.math.BigDecimal comm;
+
